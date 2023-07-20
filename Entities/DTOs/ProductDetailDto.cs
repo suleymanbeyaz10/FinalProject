@@ -1,7 +1,7 @@
-﻿using Core.Entities;
+﻿using Core.Entities.Abstract;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace Entities.DTOs
 {
