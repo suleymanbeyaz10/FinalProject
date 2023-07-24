@@ -7,11 +7,11 @@ namespace Core.Utilities.Business
     {
         public static IResult Run(params IResult[] logics)
         {
-            foreach (var logic in logics) 
+            foreach (var result in logics)
             {
-                if (logic.Success)
+                if (!result.Success)
                 {
-                    return logic;
+                    return result;
                 }
             }
             return null;
