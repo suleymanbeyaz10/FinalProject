@@ -22,6 +22,9 @@ namespace WebAPI.Controllers
         {
             //Dependency chain --
             //IoC -- Inversion of Control
+
+            Thread.Sleep(1000);
+
             var result = _productService.GetAll();
             if (result.Success)
             {
@@ -30,11 +33,35 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
         
+        [HttpGet("getbycategory")]
+
+        public IActionResult GetByCategoryId(int categoryId)
+        {
+            var result = _productService.GetAllByCategoryId(categoryId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpGet("getbyid")]
 
         public IActionResult GetById(int id)
         {
             var result = _productService.GetById(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getproductdetails")]
+
+        public IActionResult GetProductDetails()
+        {
+            var result = _productService.GetProductDetails();
             if (result.Success)
             {
                 return Ok(result);

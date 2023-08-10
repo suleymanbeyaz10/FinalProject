@@ -38,6 +38,7 @@ namespace WebAPI
                 option.AddPolicy("AllowOrigin",
                     builder => builder.WithOrigins("http://localhost:3000"));
             });
+            builder.Services.AddCors();
 
             //Autofac attribution
             builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
@@ -77,6 +78,8 @@ namespace WebAPI
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            app.ConfigureCustomExceptionMiddleware();
+            app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
 
             app.UseHttpsRedirection();
 
